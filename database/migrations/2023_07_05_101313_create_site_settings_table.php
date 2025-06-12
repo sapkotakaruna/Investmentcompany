@@ -40,6 +40,10 @@ return new class extends Migration
             $table->string('footer_menu_six_link')->nullable();
             $table->string('footer_menu_seven_link')->nullable();
             $table->string('footer_menu_eight_link')->nullable();
+<<<<<<< HEAD
+=======
+            $table->string('stat_title');
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
             $table->timestamps();
         });
     }

@@ -9,7 +9,11 @@ use App\Models\AboutUs;
 use App\Models\Blog;
 use App\Models\Hour;
 use App\Models\File;
+<<<<<<< HEAD
 
+=======
+use App\Models\IntrestCategory;
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 use App\Models\Notice;
 use App\Models\Partner;
 use App\Models\ServiceCategory;
@@ -40,7 +44,11 @@ use App\Models\Testimonial;
     $_about_us_footer = AboutUs::select('*')->orderBy('rank')->first();
     $_audio = File::where('file_type', 'audio')->first();
     $_aboutSlider = Slider::select('photo')->orderBy('rank')->active()->skip(1)->first() ?? null;
+<<<<<<< HEAD
 
+=======
+    $_interest_category = IntrestCategory::active()->rank()->get();
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
     $_breaking = Notice::select('title', 'slug', 'excerpt', 'created_at')->whereIn('displaystat', [1, 2])->active()->limit(10)->get();
     $_partner = Partner::active()->rank()->get();
     $_isinfo = Member::select('name', 'post', 'photo', 'excerpt', 'phone', 'email', 'isinfo')
@@ -53,17 +61,28 @@ use App\Models\Testimonial;
         ->active()
         ->get();
     $_blog = Blog::latest()->whereIn('type', ['blog'])->latest()->active()->limit(3)->get();
+<<<<<<< HEAD
 
     $opening_times =  Hour::pluck('excerpt')->all();
 
 
+=======
+    
+    $opening_times =  Hour::pluck('excerpt')->all();
+
+    
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
     $site_data->with([
         '_seo' => \App\Models\Seo::first(),
         '_site_profile' => $site_profile,
         '_message' => $_message,
         '_aboutSlider' => $_aboutSlider,
         '_member_category' => $_member_category,
+<<<<<<< HEAD
 
+=======
+        '_interest_category' => $_interest_category,
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
         '_service_category' => $_service_category,
         '_about_us' => $_about_us,
         '_breaking' => $_breaking,
@@ -75,7 +94,11 @@ use App\Models\Testimonial;
         '_branch' => $_branch,
         '_blog' => $_blog,
         'opening_times' => $opening_times
+<<<<<<< HEAD
     ]);
+=======
+        ]); 
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 });
 
 
@@ -151,6 +174,16 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => ['auth']],
     Route::post('memberCategory/sort',                   [\App\Http\Controllers\Admin\MemberCategoryController::class, 'sort'])
         ->name('memberCategory.sort');
 
+<<<<<<< HEAD
+=======
+    Route::resource('interestCategory',             \App\Http\Controllers\Admin\InterestCategoryController::class);
+    Route::post('interestCategory/sort',                   [\App\Http\Controllers\Admin\InterestCategoryController::class, 'sort'])
+        ->name('interestCategory.sort');
+
+    Route::resource('statistics',             \App\Http\Controllers\Admin\StatisticsInfoController::class);
+    Route::post('statistics/sort',                   [\App\Http\Controllers\Admin\StatisticsInfoController::class, 'sort'])
+        ->name('statistics.sort');
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 
 
     Route::get('member-category/{slug}', [\App\Http\Controllers\Admin\MemberController::class, 'memberCategory'])
@@ -159,6 +192,16 @@ Route::group(['prefix' => 'admin/', 'as' => 'admin.', 'middleware' => ['auth']],
         ->name('member.member-category.create');
 
 
+<<<<<<< HEAD
+=======
+    Route::get('interest-category/{slug}', [\App\Http\Controllers\Admin\InterestController::class, 'interestCategory'])
+        ->name('interest-category.index');
+    Route::get('interest-category/{slug}/create', [\App\Http\Controllers\Admin\InterestController::class, 'interestCategoryCreate'])
+        ->name('interest.interest-category.create');
+    Route::resource('interest',             \App\Http\Controllers\Admin\InterestController::class);
+    Route::post('interest/sort',                   [\App\Http\Controllers\Admin\InterestController::class, 'sort'])
+        ->name('interest.sort');
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 
 
     Route::resource('member',             \App\Http\Controllers\Admin\MemberController::class);

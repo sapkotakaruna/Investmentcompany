@@ -26,6 +26,7 @@ class StoreContactFormValidation extends FormRequest
     public function rules()
     {
         return [
+<<<<<<< HEAD
             'name'    => ['required', 'max:150', 'string'],
             'email'   => ['required', 'max:150', 'email', function ($attribute, $value, $fail) {
                 if ($this->isTempEmail($value)) {
@@ -39,12 +40,23 @@ class StoreContactFormValidation extends FormRequest
         ];
     }
 
+=======
+            'name'               => ['required', 'max:150', 'string'],
+            'email'              => ['required', 'max:150'],
+            'phone'              =>['required'],
+            'subject'            => ['required', 'max:150'],
+            'message'            => ['required', 'max:150'],
+            'status'             => ['nullable'],
+        ];
+    }
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
     public function prepareForValidation()
     {
         $this->merge([
             'status' => $this->status ? 1 : 0,
         ]);
     }
+<<<<<<< HEAD
     protected function isTempEmail($email)
     {
         $temporaryDomains = [
@@ -62,4 +74,6 @@ class StoreContactFormValidation extends FormRequest
         $domain = strtolower(substr(strrchr($email, "@"), 1));
         return in_array($domain, $temporaryDomains);
     }
+=======
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 }

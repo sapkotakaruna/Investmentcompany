@@ -63,6 +63,7 @@ class HomeController extends Controller
         $data['video'] = File::select('title', 'nepali_title', 'link', 'file', 'file_type', 'created_at')->active()->where('file_type', 'video')->rank()->get();
         $data['intro'] = File::select('title', 'excerpt', 'file', 'file_type', 'created_at')->active()->where('file_type', 'intro')->rank()->get();
         $data['service'] = Service::orderBy('rank', 'asc')->limit(6)->get();
+<<<<<<< HEAD
         $data['_partners'] = Partner::select('title', 'photo', 'url', 'rank', 'type', 'slug', 'status')
             ->orderBy('rank')
             ->where('type', 1)
@@ -73,6 +74,18 @@ class HomeController extends Controller
             ->where('type', 0)
             ->get();
 
+=======
+        $data['_partners'] = Partner::select('title', 'photo', 'url', 'rank','type', 'slug', 'status')
+            ->orderBy('rank')
+            ->where('type', 1)
+            ->get();
+           
+        $data['assopartner'] = Partner::select('title','type' ,'photo', 'url', 'rank', 'slug', 'status')
+            ->orderBy('rank')
+            ->where('type', 0)
+            ->get();
+            
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
         $data['_blogs'] = Blog::latest()->whereIn('type', ['blog'])->latest()->active()->limit(3)->get();
         $data['_slider'] = Slider::select('title', 'photo', 'excerpt', 'caption_position', 'image_mode', 'url')->orderBy('rank')->active()->limit(5)->get();
 

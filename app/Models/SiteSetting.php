@@ -50,7 +50,11 @@ class SiteSetting extends Model
 
 
         //    stat
+<<<<<<< HEAD
 
+=======
+        'stat_title',
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
         'view_count',
     ];
     public function logo()
@@ -58,9 +62,25 @@ class SiteSetting extends Model
         return asset('/images/siteSetting/' . $this->logo);
     }
 
+<<<<<<< HEAD
 
+=======
+    public function statisticsCat(): BelongsTo
+    {
+        return $this->belongsTo(StatCat::class, 'stat_title', 'id')->where('status', 1);
+    }
+    public function interest(): HasMany
+    {
+        return $this->hasMany(Interest::class);
+    }
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
     public function hour(): HasMany
     {
         return $this->hasMany(Hour::class);
     }
+<<<<<<< HEAD
+=======
+
+    
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 }

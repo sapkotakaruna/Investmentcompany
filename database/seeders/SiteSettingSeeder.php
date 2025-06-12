@@ -3,7 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\SiteSetting;
+<<<<<<< HEAD
 
+=======
+use App\Models\StatisticsDetail;
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -26,6 +30,17 @@ class SiteSettingSeeder extends Seeder
             'facebook_link' => 'https://www.facebook.com/banepa',
             'twitter_link' => 'https://www.facebook.com/banepa',
             'opening_time' => '9:30 AM -5:30PM',
+<<<<<<< HEAD
+=======
+            'stat_title' => '2081 Baisakh',
+        ]);
+
+        StatisticsDetail::create([
+            'name' => 'Total Assets',
+            'value' => '360,000,645.24',
+            'rank' => 1,
+            'site_setting_id' => 1,
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 
         ]);
     }

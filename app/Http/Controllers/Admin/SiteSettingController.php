@@ -4,11 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\SiteSetting\UpdateSiteSettingValidation;
 use App\Models\Hour;
+<<<<<<< HEAD
+
 
 use App\Models\Web\Menu;
 use App\Models\SiteSetting;
 
 
+=======
+use App\Models\Interest;
+use App\Models\Web\Menu;
+use App\Models\SiteSetting;
+use App\Models\StatCat;
+use App\Models\StatisticsDetail;
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 
 class SiteSettingController extends BaseController
 {
@@ -34,7 +43,11 @@ class SiteSettingController extends BaseController
     {
         $data = [];
         $data['row'] = SiteSetting::first();
+<<<<<<< HEAD
 
+=======
+        $data['statisticsCategoty'] = StatCat::pluck('title', 'id');
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 
 
         return view(parent::loadCommonDataToView($this->view_path . '.edit'), compact('data'));
@@ -78,4 +91,76 @@ class SiteSettingController extends BaseController
         }
         return null;
     }
+<<<<<<< HEAD
+=======
+
+
+    protected function storeStatisticsDataEdit(Request $request, SiteSetting $gallery)
+    {
+        $gallery_image_ids = [];
+
+        if ($request->has('gallery')) {
+            $rank_key = 0;
+            foreach ($request->get('gallery') as $key => $item) {
+                $gallery_image_id =  isset($item['id']) ? $item['id'] : false;
+                if ($gallery_image_id) {
+                    $gallery_image = StatisticsDetail::find($gallery_image_id);
+                    $file = $request->file('gallery.' . $key . '.gallery_image');
+                    if ($file) {
+                        //upload new image
+                        $this->processImage($file, config('helper.gallery_image'));
+                        //remove old image and thumbnails
+                        @$this->removeFile($this->folder_path . DIRECTORY_SEPARATOR . $gallery_image->image);
+                        @$this->removeFile($this->folder_path . DIRECTORY_SEPARATOR . '1600_1200_' . $gallery_image->image);
+                        @$this->removeFile($this->folder_path . DIRECTORY_SEPARATOR . '200_150_' . $gallery_image->image);
+                    }
+
+                    $gallery_image->update([
+                        'image'      => $file ? $this->file_name : $gallery_image->image,
+                        'alt_text'   => $item['alt_text'],
+                        'caption'    => $item['caption'],
+                        'rank'       => $rank_key,
+                        'status'     => $item['status'],
+                    ]);
+
+                    $gallery_image_ids[] = $gallery_image_id;
+                } else {
+                    //add
+                    $file = $request->file('gallery.' . $key . '.gallery_image');
+                    if ($file) {
+                        $gallery_image = StatisticsDetail::create([
+                            'gallery_id' => $gallery->id,
+                            'alt_text'   => $item['alt_text'],
+                            'caption'    => $item['caption'],
+                        ]);
+
+                        $gallery_image_ids[] = $gallery_image->id;
+                    }
+                }
+            }
+        } else {
+            StatisticsDetail::where('gallery_id', $gallery->id)->delete();
+        }
+    }
+
+    protected function removeGalleries($id)
+    {
+        StatisticsDetail::where('gallery_id', $id)->delete();
+    }
+
+    protected function hour($request, $row)
+    {
+        if ($request->has('hourData')) {
+            Hour::where('site_setting_id', $row->id)->delete();
+            foreach ($request->get('hourData') as $key => $item) {
+                if ($item['excerpt'] != null) {
+                    Hour::updateOrCreate([
+                        'site_setting_id' => $row->id,
+                        'excerpt' => $item['excerpt'],
+                    ], ['id' => $item['id'] ?? null]);
+                }
+            }
+        }
+    }
+>>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 }
