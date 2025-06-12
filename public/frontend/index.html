@@ -1,0 +1,399 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>GAUTHALI</title>
+    <style>
+        /* Sticky navbar on scroll */
+        .sticky-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            z-index: 50;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header (Will scroll away) -->
+    <div id="header" class="bg-blue-900">
+        <div
+            class="max-w-6xl mx-auto hidden md:flex flex-col lg:flex-row gap-4 text-white w-full h-18 items-center p-4 justify-between font-semibold">
+            <div class="flex flex-row gap-6">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-phone"></i>
+                    <p>977-9847568942</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-envelope"></i>
+                    <p>info@gauthali.com</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <p>Sanepa, Lalitpur, Nepal</p>
+                </div>
+            </div>
+            <div class="flex flex-row gap-4">
+                <p>Company Profile</p>
+                <a href="career.html">Career</a>
+                <div class="flex items-center gap-6">
+                    <a href="#" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-linkedin"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar (Will stick to the top when scrolling) -->
+    <div id="navbar" class="shadow bg-white transition-all duration-300">
+        <div class="max-w-6xl mx-auto flex justify-between p-4 items-center">
+            <div class="flex items-center gap-6">
+                <div id="menu-Btn" class="lg:hidden cursor-pointer order-first">
+                    <i class="fa fa-bars text-[30px]"></i>
+                </div>
+                <h1 class="text-[30px] font-bold mx-auto">GAUTHALI</h1>
+            </div>
+            <ul class="hidden lg:flex flex-row items-center space-x-6">
+                <li class="relative group" onmouseenter="showDropdown()" onmouseleave="hideDropdown()">
+                    <div class="flex items-center gap-1">
+                        <a href="./index.html" class="text-[#1a3c77] font-bold">HOME</a>
+                        <i class="fas fa-chevron-down text-sm"></i>
+                    </div>
+                    <ul id="dropdown" class="absolute hidden bg-white shadow-lg mt-2 py-2 w-48">
+                        <li><a href="./index.html" class="block px-4 py-2 hover:bg-gray-100 text-[#1a3c77]">Home 1</a>
+                        </li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 text-[#1a3c77]">Home 2</a>
+                        </li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 text-[#1a3c77]">Home 3</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li><a href="about.html" class="text-[#1a3c77] font-bold">ABOUT US</a></li>
+                <li><a href="./gallery.html" class="text-[#1a3c77] font-bold">GALLERY</a></li>
+                <li class="relative group" onmouseenter="showCompaniesDropdown()"
+                    onmouseleave="hideCompaniesDropdown()">
+                    <div class="flex items-center gap-1">
+                        <a href="#" class="text-[#1a3c77] font-bold">COMPANIES</a>
+                        <i class="fas fa-chevron-down text-sm"></i>
+                    </div>
+                    <ul id="companies-menu-dropdown"
+                        class="absolute hidden group-hover:block bg-white shadow-lg mt-2 py-2 w-48">
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 text-[#1a3c77]">Company 1</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 text-[#1a3c77]">Company 2</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-100 text-[#1a3c77]">Company 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="./blog.html" class="text-[#1a3c77] font-bold">BLOG</a></li>
+                <li><a href="./contact.html" class="text-[#1a3c77] font-bold">CONTACT</a></li>
+            </ul>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <ul id="mobile-menu"
+            class="lg:hidden hidden flex-col bg-white absolute left-0 w-64 text-center py-4 space-y-4 shadow-lg z-50">
+            <li class="relative">
+                <!-- Toggle Dropdown Button -->
+                <div class="flex items-center justify-center gap-1 cursor-pointer" onclick="homeToggleMobileDropdown()">
+                    <a href="#" class="text-[#1a3c77] font-bold">HOME</a>
+                    <i class="fas fa-chevron-down text-sm"></i>
+                </div>
+
+                <!-- Dropdown Menu (Initially Hidden) -->
+                <ul id="home-dropdown" class="hidden bg-gray-50 w-full py-2">
+                    <li><a href="./index.html" class="block py-2 hover:bg-gray-100 text-[#1a3c77]">Home 1</a></li>
+                    <li><a href="#" class="block py-2 hover:bg-gray-100 text-[#1a3c77]">Home 2</a></li>
+                    <li><a href="#" class="block py-2 hover:bg-gray-100 text-[#1a3c77]">Home 3</a></li>
+                </ul>
+            </li>
+            <li><a href="./about.html" class="text-[#1a3c77] font-bold">ABOUT US</a></li>
+
+            <li><a href="./gallery.html" class="text-[#1a3c77] font-bold">GALLERY</a></li>
+            <li class="relative">
+                <!-- Toggle Dropdown Button -->
+                <div class="flex items-center justify-center gap-1 cursor-pointer"
+                    onclick="companyToggleMobileDropdown()">
+                    <a href="#" class="text-[#1a3c77] font-bold">COMPANIES</a>
+                    <i class="fas fa-chevron-down text-sm"></i>
+                </div>
+
+                <!-- Dropdown Menu (Initially Hidden) -->
+                <ul id="company-dropdown" class="hidden bg-gray-50 w-full py-2">
+                    <li><a href="#" class="block py-2 hover:bg-gray-100 text-[#1a3c77]">Companies 1</a></li>
+                    <li><a href="#" class="block py-2 hover:bg-gray-100 text-[#1a3c77]">Companies 2</a></li>
+                    <li><a href="#" class="block py-2 hover:bg-gray-100 text-[#1a3c77]">Companies 3</a></li>
+                </ul>
+            </li>
+            <li><a href="./blog.html" class="text-[#1a3c77] font-bold">BLOG</a></li>
+            <li><a href="./contact.html" class="text-[#1a3c77] font-bold">CONTACT</a></li>
+            <li><a href="./career.html" class="text-[#1a3c77] font-bold block md:hidden">CAREER</a></li>
+
+        </ul>
+    </div>
+
+    <!-- video -->
+    <div>
+        <video src="https://www.chaudharygroup.com/video/CG Corp Global A Multinational Corporate_Trim.mp4" controls
+            autoplay muted class="w-full h-full object-cover">
+        </video>
+    </div>
+    <div class="max-w-6xl mx-auto  p-2 lg:p-0">
+        <img src="./image/chaudharygroupstats.jpg" alt="" class="w-full h-50 object-cover">
+        <div class="flex flex-col gap-4">
+            <h2 class="text-4xl flex justify-center items-center">Taking Nepal To The World</h2>
+            <p class="text-lg flex flex-wrap justify-center">
+                The new generation of Chaudhary family has branched out with new vision, to take the business to newer
+                heights in the global arena.
+            </p>
+        </div>
+    </div>
+
+    <!-- ChairMan's Message -->
+    <div class="max-w-6xl mx-auto mt-10 grid grid-cols-1 md:grid-cols-2 gap-2 p-2 lg:p-0">
+        <div class="flex flex-col gap-4">
+            <h2 class=" text-5xl text-blue-900">Chairman's<br /> Message</h2>
+            <p class="flex flex-wrap text-lg text-gray-600 leading-relaxed">
+
+                With pride and pleasure, I introduce you to Chaudhary Group, a conglomerate that comprises 202 companies
+                and 261 brands accross the world.
+
+            </p>
+            <p class="flex flex-wrap text-lg text-gray-600 leading-relaxed">
+
+                My grandfather, late Mr Bhuramull Chaudhary, laid the foundation of Chaudhary Group in 1870 as a textile
+                business. Today, it has interests in fast-moving consumers goods(FMCG), electronics(consumer durables),
+                education, cement, energy, hospitality, realty development, financial services, telecom, Ayurveda,
+                biotech, and engineering & construction.
+
+            </p>
+            <p class="flex flex-wrap text-lg text-gray-600 leading-relaxed">
+
+                We are committed to the highest standards in whatever we do. Our quality benchmarks are amongst the best
+                in the world, our ethical standards are high, we are responsive to the needs of our customers and
+                believe in building long-term partnerships with them. We have carried out with distinction our social
+                and environmental responsibilities.
+
+            </p>
+        </div>
+
+        <div>
+            <img src="./image/portrait.png" alt="portrait" class="w-full h-full object-cover">
+        </div>
+    </div>
+    <!-- slider -->
+    <div class="mt-10 max-w-6xl mx-auto">
+        <h2 class="text-4xl text-center mb-8">Our Services</h2>
+        <div class="overflow-hidden relative">
+            <div class="flex animate-scroll">
+                <img src="./image/1.jpg" alt="Logo 1" class="w-40 h-40 md:w-60 md:h-60  object-contain mx-4">
+                <img src="./image/2.png" alt="Logo 2" class="w-40 h-40 md:w-60 md:h-60 object-contain mx-4">
+                <img src="./image/3.png" alt="Logo 3" class="w-40 h-40 md:w-60 md:h-60 object-contain mx-4">
+                <img src="./image/4.png" alt="Logo 4" class="w-40 h-40 md:w-60 md:h-60 object-contain mx-4">
+                <img src="./image/5.png" alt="Logo 5" class="w-40 h-40 md:w-60 md:h-60 object-contain mx-4">
+                <img src="./image/1.jpg" alt="Logo 1" class="w-40 h-40 md:w-60 md:h-60 object-contain mx-4">
+                <img src="./image/2.png" alt="Logo 2" class="w-40 h-40 md:w-60 md:h-60 object-contain mx-4">
+                <img src="./image/3.png" alt="Logo 3" class="w-40 h-40 md:w-60 md:h-60 object-contain mx-4">
+                <img src="./image/4.png" alt="Logo 4" class="w-40 h-40 md:w-60 md:h-60 object-contain mx-4">
+                <img src="./image/5.png" alt="Logo 5" class="w-40 h-40 md:w-60 md:h-60 object-contain mx-4">
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="bg-gradient-to-r from-[#1b3d78] to-[#2b5eb9] py-16 text-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 ">
+                <!-- About Us Section -->
+                <div class="transform hover:scale-105 transition duration-300 p-6 rounded-lg bg-white/5">
+                    <h2 class="text-2xl font-bold text-white mb-6 border-b border-blue-400 pb-2">About Us</h2>
+                    <p class="text-gray-200 leading-relaxed mb-6"></p>
+                    Chaudhary Group is headquartered in Kathmandu; We provide world-class services and products in
+                    various fields such as hotels and resorts, education, realty, FMCG (food & beverage), financial
+                    services, consumer electronics, cement, hydropower, and EPC.
+                    </p>
+                    <ul class="flex flex-col gap-4">
+                        <li class="flex items-center gap-4 hover:text-blue-300 transition duration-300 group">
+                            <i class="fas fa-home text-blue-300 group-hover:scale-110"></i>
+                            <a href="#" class="hover:underline">www.chaudharygroup.com</a>
+                        </li>
+                        <li class="flex items-center gap-4 hover:text-blue-300 transition duration-300 group">
+                            <i class="fas fa-envelope text-blue-300 group-hover:scale-110"></i>
+                            <a href="mailto:abc@gmail.com" class="hover:underline">abc@gmail.com</a>
+                        </li>
+                        <li class="flex items-center gap-4 hover:text-blue-300 transition duration-300 group">
+                            <i class="fas fa-map-marker-alt text-blue-300 group-hover:scale-110"></i>
+                            <span>Panauti</span>
+                        </li>
+                        <li class="flex items-center gap-4 hover:text-blue-300 transition duration-300 group">
+                            <i class="fas fa-phone text-blue-300 group-hover:scale-110"></i>
+                            <a href="tel:9841256370" class="hover:underline">9841256370</a>
+                        </li>
+                        <li class="flex items-center gap-4 hover:text-blue-300 transition duration-300 group">
+                            <i class="fas fa-file text-blue-300 group-hover:scale-110"></i>
+                            <a href="#" class="hover:underline">Careers</a>
+                        </li>
+
+
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Recent Posts Section -->
+                <div class="transform hover:scale-105 transition duration-300 p-6 rounded-lg bg-white/5">
+                    <h2 class="text-2xl font-bold mb-6 border-b border-blue-400 pb-2">Recent Posts</h2>
+                    <div class="space-y-6">
+                        <div class="flex gap-4 hover:bg-white/10 transition duration-300 p-4 rounded-lg cursor-pointer">
+                            <img src="/image/pic.webp" class="h-16 w-24 object-cover rounded-lg shadow-lg" alt="News" />
+                            <p class="text-gray-200 hover:text-blue-300 transition duration-300">
+                                WKND Conversation: Meet Binod Chaudhary, Nepal's first and only billionaire
+                            </p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex gap-4 hover:bg-white/10 transition duration-300 p-4 rounded-lg cursor-pointer">
+                            <img src="/image/pic.webp" class="h-16 w-24 object-cover rounded-lg shadow-lg" alt="News" />
+                            <p class="text-gray-200 hover:text-blue-300 transition duration-300">
+                                WKND Conversation: Meet Binod Chaudhary, Nepal's first and only billionaire
+                            </p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="flex gap-4 hover:bg-white/10 transition duration-300 p-4 rounded-lg cursor-pointer">
+                            <img src="/image/pic.webp" class="h-16 w-24 object-cover rounded-lg shadow-lg" alt="News" />
+                            <p class="text-gray-200 hover:text-blue-300 transition duration-300">
+                                WKND Conversation: Meet Binod Chaudhary, Nepal's first and only billionaire
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- By Gauthali Group Section -->
+                <div class="transform hover:scale-105 transition duration-300 p-6 rounded-lg bg-white/5">
+                    <h2 class="text-2xl font-bold mb-6 border-b border-blue-400 pb-2">By Gauthali Group</h2>
+                    <div class="grid grid-cols-2 gap-6">
+                        <img src="/image/cg-brewery.svg"
+                            class="h-12 w-24 hover:scale-110 transition duration-300 filter brightness-0 invert cursor-pointer" />
+                        <img src="/image/cg-brewery.svg"
+                            class="h-12 w-24 hover:scale-110 transition duration-300 filter brightness-0 invert cursor-pointer" />
+                        <img src="/image/cg-brewery.svg"
+                            class="h-12 w-24 hover:scale-110 transition duration-300 filter brightness-0 invert cursor-pointer" />
+                        <img src="/image/cg-brewery.svg"
+                            class="h-12 w-24 hover:scale-110 transition duration-300 filter brightness-0 invert cursor-pointer" />
+                        <img src="/image/cg-brewery.svg"
+                            class="h-12 w-24 hover:scale-110 transition duration-300 filter brightness-0 invert cursor-pointer" />
+                        <img src="/image/cg-brewery.svg"
+                            class="h-12 w-24 hover:scale-110 transition duration-300 filter brightness-0 invert cursor-pointer" />
+                        <img src="/image/cg-brewery.svg"
+                            class="h-12 w-24 hover:scale-110 transition duration-300 filter brightness-0 invert cursor-pointer" />
+                        <img src="/image/cg-brewery.svg"
+                            class="h-12 w-24 hover:scale-110 transition duration-300 filter brightness-0 invert cursor-pointer" />
+                        <img src="/image/cg-brewery.svg"
+                            class="h-12 w-24 hover:scale-110 transition duration-300 filter brightness-0 invert cursor-pointer" />
+                        <img src="/image/cg-brewery.svg"
+                            class="h-12 w-24 hover:scale-110 transition duration-300 filter brightness-0 invert cursor-pointer" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto mt-8 text-center">
+            <div class="border-t border-white/20 pt-8">
+                <p class="text-gray-300 hover:text-white transition duration-300">© Copyright 2022. All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script>
+        window.addEventListener("scroll", function () {
+            var header = document.getElementById("header");
+            var navbar = document.getElementById("navbar");
+
+            if (window.scrollY > header.offsetHeight) {
+                navbar.classList.add("sticky-nav");
+            } else {
+                navbar.classList.remove("sticky-nav");
+            }
+        });
+
+        const menuBtn = document.getElementById("menu-Btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+    <script>
+        let dropdownTimeout;
+
+        function showDropdown() {
+            clearTimeout(dropdownTimeout);
+            document.getElementById("dropdown").classList.remove("hidden");
+        }
+
+        function hideDropdown() {
+            dropdownTimeout = setTimeout(() => {
+                document.getElementById("dropdown").classList.add("hidden");
+            }, 500);
+        }    
+    </script>
+    <script>
+        let companiesDropdownTimeout;
+
+        function showCompaniesDropdown() {
+            clearTimeout(companiesDropdownTimeout);
+            document.getElementById("companies-menu-dropdown").classList.remove("hidden");
+        }
+
+        function hideCompaniesDropdown() {
+            companiesDropdownTimeout = setTimeout(() => {
+                document.getElementById("companies-menu-dropdown").classList.add("hidden");
+            }, 500);
+        }
+    </script>
+    <script>
+        function homeToggleMobileDropdown() {
+            let dropdown = document.getElementById("home-dropdown");
+            dropdown.classList.toggle("hidden");
+        }
+    </script>
+    <script>
+        function companyToggleMobileDropdown() {
+            let dropdown = document.getElementById("company-dropdown");
+            dropdown.classList.toggle("hidden");
+        }
+    </script>
+
+
+
+
+    <style>
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-scroll {
+            animation: scroll 20s linear infinite;
+        }
+    </style>
+</body>
+
+</body>
+
+</html>
