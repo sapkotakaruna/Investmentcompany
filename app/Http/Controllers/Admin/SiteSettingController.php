@@ -4,20 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Admin\SiteSetting\UpdateSiteSettingValidation;
 use App\Models\Hour;
-<<<<<<< HEAD
 
-
-use App\Models\Web\Menu;
-use App\Models\SiteSetting;
-
-
-=======
 use App\Models\Interest;
 use App\Models\Web\Menu;
 use App\Models\SiteSetting;
 use App\Models\StatCat;
 use App\Models\StatisticsDetail;
->>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 
 class SiteSettingController extends BaseController
 {
@@ -43,11 +35,8 @@ class SiteSettingController extends BaseController
     {
         $data = [];
         $data['row'] = SiteSetting::first();
-<<<<<<< HEAD
 
-=======
         $data['statisticsCategoty'] = StatCat::pluck('title', 'id');
->>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 
 
         return view(parent::loadCommonDataToView($this->view_path . '.edit'), compact('data'));
@@ -91,8 +80,6 @@ class SiteSettingController extends BaseController
         }
         return null;
     }
-<<<<<<< HEAD
-=======
 
 
     protected function storeStatisticsDataEdit(Request $request, SiteSetting $gallery)
@@ -162,5 +149,4 @@ class SiteSettingController extends BaseController
             }
         }
     }
->>>>>>> 860413d814efe3690716e72edc4ee89a82400cce
 }
